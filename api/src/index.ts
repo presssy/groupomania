@@ -21,7 +21,7 @@ class App {
 
     private config(): void {
         this.app.use(cors({
-            origin: "http://localhost:5173",
+            origin: process.env.ORIGIN_HOST || "http://localhost:5173",
             credentials: true
         }))
         this.app.use(express.json())

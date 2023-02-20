@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    container_name: mysql-groupomania
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: groupomania-app
+    ports:
+      - "3306:3306"
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma-groupomania
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  api:
+    build: ./api
+    container_name: api-groupomania
+    command: yarn dev
+    ports:
+      - "4040:4040"
+    volumes:
+      - ./api:/usr/src/api
+      - /usr/src/api/node_modules
+    depends_on:
+      - pma
