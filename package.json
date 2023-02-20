@@ -1,0 +1,12 @@
+{
+  "name": "groupomania",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "http://presssy: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@github.com/presssy/groupomania",
+  "author": "Benoit Garcia <bgarcia@kaliop.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "docker-compose up",
+    "build": "docker-compose up --build"
+  }
+}
