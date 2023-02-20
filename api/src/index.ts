@@ -1,4 +1,6 @@
 import express, {Application} from "express"
+import session from "express-session"
+import passport from "passport"
 import cors from "cors"
 import * as dotenv from "dotenv"
 
@@ -25,6 +27,15 @@ class App {
             credentials: true
         }))
         this.app.use(express.json())
+
+        this.app.use(session({
+            secret: process.env.SESSION_KEY || "secretKey",
+            resave: false,
+            saveUninitialized: false
+        }))
+
+        this.app.use(passport.initialize())
+        this.app.use(passport.session())
     }
 }
 
