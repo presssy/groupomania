@@ -1,2 +1,3 @@
-# groupomania
+# Groupomania
+
 OpenClassrooms Project
