@@ -10,6 +10,7 @@ class UsersRoutes extends Routes {
   }
 
   private usersRoutes(): void {
+    this.router.post("/signin", this.usersControllers.signInUser);
     this.router.post("/register", this.usersControllers.registerUser);
     this.router.get("/all", this.usersControllers.getAllUsers);
     this.router.get("/:id", this.usersControllers.getOneUser);
