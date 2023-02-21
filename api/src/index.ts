@@ -1,8 +1,9 @@
-import express, {Application} from "express"
+import express, {Application, Request, Response} from "express"
 import session from "express-session"
 import passport from "passport"
 import cors from "cors"
 import * as dotenv from "dotenv"
+import usersRoutes from "@/routes/users"
 
 dotenv.config()
 
@@ -12,6 +13,7 @@ class App {
     constructor() {
         this.app = express()
         this.config()
+        this.initRoutes()
 
         this.app.listen(process.env.API_PORT || 4040, () => {
             console.log(`🚀 Server is launching...`);
@@ -36,6 +38,11 @@ class App {
 
         this.app.use(passport.initialize())
         this.app.use(passport.session())
+    }
+
+    private initRoutes(): void {
+        this.app.get('/', (req: Request, res: Response) => res.send('Routes not found'))
+        this.app.use('/users', usersRoutes)
     }
 }
 
