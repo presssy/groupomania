@@ -1,18 +1,19 @@
 import Routes from "@/routes/index";
-import UsersControllers from "@/controllers/users"
+import UsersControllers from "@/controllers/users";
 
 class UsersRoutes extends Routes {
+  private usersControllers = UsersControllers;
 
-    private usersControllers = UsersControllers
+  constructor() {
+    super();
+    this.usersRoutes();
+  }
 
-    constructor() {
-        super();
-        this.usersRoutes()
-    }
-
-    private usersRoutes(): void {
-        this.router.post('/register', this.usersControllers.registerUser)
-    }
+  private usersRoutes(): void {
+    this.router.post("/register", this.usersControllers.registerUser);
+    this.router.get("/all", this.usersControllers.getAllUsers);
+    this.router.get("/:id", this.usersControllers.getOneUser);
+  }
 }
 
-export default new UsersRoutes().router
+export default new UsersRoutes().router;

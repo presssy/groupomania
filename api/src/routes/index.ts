@@ -1,19 +1,21 @@
-import {Request, Response, Router} from "express";
+import { Request, Response, Router } from "express";
 
 class Routes {
-    public router: Router
+  public router: Router;
 
-    constructor() {
-        this.init()
-    }
+  constructor() {
+    this.router = Router();
+    this.init();
+  }
 
-    private init(): void {
-        /**
-         * common routes
-         */
-
-        this.router.get('/', (req: Request, res: Response) => res.send('Route not found'))
-    }
+  private init(): void {
+    /**
+     * common routes
+     */
+    this.router.get("/", (req: Request, res: Response) =>
+      res.send("Route not found")
+    );
+  }
 }
 
-export default Routes
+export default Routes;
